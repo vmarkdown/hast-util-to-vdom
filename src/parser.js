@@ -3,9 +3,9 @@ var mode = require('./mode');
 var renderer = require('./renderer');
 
 function Parser(options) {
-    this.options = options;
-    this.renderer = options.renderer;
-    this.h = options.h;
+    this.options = options || {};
+    this.renderer = this.options.renderer;
+    this.h = this.options.h;
 }
 
 Parser.prototype.parseNodes = function(nodes, parent) {

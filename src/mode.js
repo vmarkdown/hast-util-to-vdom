@@ -2,7 +2,7 @@ var modes = {
 
     'vue': {
         test: function (h) {
-            return h.toString().indexOf('vm') > -1;
+            return h && h.toString().indexOf('vm') > -1;
         },
         data: function (node) {
             if(!node.properties) return {};
@@ -19,7 +19,7 @@ var modes = {
 
     'preact': {
         test: function () {
-
+            return false;
         },
         data: function (node) {
             return node.properties;

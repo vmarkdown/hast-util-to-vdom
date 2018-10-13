@@ -17,9 +17,10 @@
 
 var toVdom = require('hast-util-to-vdom');
 module.exports = function plugin(options) {
+    // var self = this;
     return function(root) {
-        var h = self.data('h');
-        if(h) {parser.h = h;}
+        // var h = self.data('h');
+        // if(h) {options.h = h;}
         return toVdom(root, options);
     }
 };
