@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'none',
     entry: {
-        'example-main': path.resolve(__dirname, 'src/vue.js')
+        'example-main': path.resolve(__dirname, 'src/index.js')
     },
     output: {
         path: path.resolve(__dirname, 'www'),
