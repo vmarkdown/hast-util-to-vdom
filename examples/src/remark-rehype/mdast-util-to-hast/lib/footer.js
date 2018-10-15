@@ -27,6 +27,7 @@ function generateFootnotes(h) {
       children: def.children.concat({
         type: 'link',
         url: '#fnref-' + def.identifier,
+        target: '_self',
         data: {hProperties: {className: ['footnote-backref']}},
         children: [{type: 'text', value: '↩'}]
       }),

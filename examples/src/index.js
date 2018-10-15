@@ -10,7 +10,9 @@ var find = require('unist-util-find');
 // const { h, render } = require('preact');
 
 const processor = unified()
-    .use(parse, {})
+    .use(parse, {
+        footnotes: true
+    })
     .use(remark2rehype)
     // .use(toVdom, {
     //     h: h,
@@ -46,6 +48,7 @@ const app = new Vue({
 
         console.time('toVdom');
         const vdom = toVdom(hast, {
+            mode: 'vue',
             h: h,
             rootTagName: 'main',
             rootClassName: 'markdown-body'

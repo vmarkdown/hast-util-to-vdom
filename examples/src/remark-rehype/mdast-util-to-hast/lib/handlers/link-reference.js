@@ -15,7 +15,7 @@ function linkReference(h, node) {
     return revert(h, node)
   }
 
-  props = {href: normalize(def.url || '')}
+  props = {href: normalize(def.url || ''), target: '_blank'}
 
   if (def.title !== null && def.title !== undefined) {
     props.title = def.title

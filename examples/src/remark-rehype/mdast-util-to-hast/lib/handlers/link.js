@@ -6,8 +6,8 @@ var all = require('../all')
 module.exports = link
 
 /* Transform a link. */
-function link(h, node) {
-  var props = {href: normalize(node.url),target: '_blank'}
+function link(h, node) {//console.log(node)
+  var props = {href: normalize(node.url), target: node.target || '_blank'}
 
   if (node.title !== null && node.title !== undefined) {
     props.title = node.title;
