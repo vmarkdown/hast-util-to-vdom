@@ -1,6 +1,8 @@
 const unified = require('unified');
-const parse = require('remark-parse');
-const remark2rehype = require('./remark-rehype');
+const parse = require('../remark-parse');
+const breaks = require('remark-breaks')
+
+const remark2rehype = require('../remark-rehype');
 const toVdom = require('../../index');
 import Vue from 'vue';
 var find = require('unist-util-find');
@@ -13,6 +15,8 @@ const processor = unified()
     .use(parse, {
         footnotes: true
     })
+    .use(breaks, {})
+
     .use(remark2rehype)
     // .use(toVdom, {
     //     h: h,
