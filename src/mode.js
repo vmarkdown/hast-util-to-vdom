@@ -1,4 +1,12 @@
-var modes = {
+function isFunction(obj){
+    return Object.prototype.toString.call(obj)==='object Function';
+}
+
+function isString(str) {
+    return typeof str === 'string' || str instanceof String;
+}
+
+var defaultModes = {
 
     'vue': {
         test: function (h) {
@@ -28,19 +36,11 @@ var modes = {
 
 };
 
-function isFunction(obj){
-    return Object.prototype.toString.call(obj)==='object Function';
-}
-
-function isString(str) {
-    return typeof str === 'string' || str instanceof String;
-}
-
 module.exports = function (node, h, mode) {
 
     if(mode) {
-        if( isString(mode) && modes.hasOwnProperty(mode) ) {
-            return modes[mode].data;
+        if( isString(mode) && defaultModes.hasOwnProperty(mode) ) {
+            return defaultModes[mode].data;
         }
 
         if( isFunction(mode) ) {
@@ -48,10 +48,10 @@ module.exports = function (node, h, mode) {
         }
     }
 
-    var list = Object.keys(modes);
+    var list = Object.keys(defaultModes);
     for (var i=0;i<list.length;i++) {
         var item = list[i];
-        var _mode = modes[item];
+        var _mode = defaultModes[item];
         if( _mode.test(h) ) {
             return _mode.data;
         }

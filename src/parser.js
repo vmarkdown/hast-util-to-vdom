@@ -3,6 +3,7 @@ var renderer = require('./renderer');
 
 function Parser(options) {
     this.options = options || {};
+    this.dataFuc = null;
     this.h = this.options.h || function (tagName, properties, value) {
         return value;
     };
@@ -25,8 +26,17 @@ Parser.prototype.parseNode = function(node, parent) {
     if(!node) return null;
     var children = this.parseNodes(node.children, node);
     var h = this.h;
-    var data = mode(node, h, this.options.mode);
-    var properties = data?data(node):{};
+
+    var properties = {};
+    if(!this.dataFuc){
+        var data = mode(node, h, this.options.mode);
+        if(data) {
+            this.dataFuc = data;
+        }
+    }
+    if(this.dataFuc){
+        properties = this.dataFuc(node);
+    }
     return renderer[node.type].apply(null, [h, node, properties, children, this.options]);
 };
 

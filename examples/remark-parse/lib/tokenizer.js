@@ -82,7 +82,7 @@ function factory(type) {
      * with the remaining value.  If no tokenizer eats,
      * something failed (should not happen) and an
      * exception is thrown. */
-    while (value) {
+    while (value) {//console.log(value);
       index = -1;
       length = methods.length;
       matched = false;

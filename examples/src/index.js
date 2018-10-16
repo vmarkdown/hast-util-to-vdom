@@ -1,6 +1,6 @@
 const unified = require('unified');
 const parse = require('../remark-parse');
-const breaks = require('remark-breaks')
+// const breaks = require('remark-breaks')
 
 const remark2rehype = require('../remark-rehype');
 const toVdom = require('../../index');
@@ -13,9 +13,10 @@ var find = require('unist-util-find');
 
 const processor = unified()
     .use(parse, {
+        commonmark: false,
         footnotes: true
     })
-    .use(breaks, {})
+    // .use(breaks, {})
 
     .use(remark2rehype)
     // .use(toVdom, {
@@ -53,6 +54,17 @@ const app = new Vue({
         console.time('toVdom');
         const vdom = toVdom(hast, {
             mode: 'vue',
+            // mode: function (node) {
+            //     if(!node.properties) return {};
+            //     var props = {
+            //         attrs: node.properties,
+            //     };
+            //     if(node.properties.className) {
+            //         props['class'] = node.properties.className;
+            //         delete props.attrs.className;
+            //     }
+            //     return props;
+            // },
             h: h,
             rootTagName: 'main',
             rootClassName: 'markdown-body'
