@@ -13,6 +13,7 @@ module.exports = {
         
     },
     raw: function (h, node, properties, children) {
-        return h(node.tagName, properties, children);
+        // return h(node.tagName, properties, children);
+        return node.value;
     }
 };
