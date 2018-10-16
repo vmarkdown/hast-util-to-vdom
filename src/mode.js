@@ -14,20 +14,32 @@ var defaultModes = {
             return h && h.toString().indexOf('vm') > -1;
         },
         data: function (node) {
-            if(!node.properties) return {};
             var props = {
-                attrs: node.properties,
+                attrs: {},
                 domProps: {}
             };
-            if(node.properties.className) {
-                props['class'] = node.properties.className;
-                delete props.attrs.className;
+
+            if(node.properties){
+
+                if(node.properties.className) {
+                    props['class'] = node.properties.className;
+                }
+
+                if(node.properties.innerHTML) {
+                    props.domProps.innerHTML = node.properties.innerHTML;
+                }
+
+                Object.keys(node.properties).forEach(function (key) {
+                    if( key ==='className' || key==='innerHTML' ){
+                        return;
+                    }
+                    props.attrs[key] = node.properties[key];
+                });
+
             }
-            if(node.properties.innerHTML) {
-                props.domProps.innerHTML = node.properties.innerHTML;
-                delete props.attrs.innerHTML;
-            }
+
             return props;
+
         }
     },
 
