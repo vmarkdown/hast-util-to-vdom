@@ -17,10 +17,15 @@ var defaultModes = {
             if(!node.properties) return {};
             var props = {
                 attrs: node.properties,
+                domProps: {}
             };
             if(node.properties.className) {
                 props['class'] = node.properties.className;
                 delete props.attrs.className;
+            }
+
+            if(node.html) {
+                props.domProps.innerHTML = node.html;
             }
             return props;
         }
