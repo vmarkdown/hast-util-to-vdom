@@ -1,6 +1,6 @@
 {
   "name": "hast-util-to-vdom",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Compile hast to Virtual DOM",
   "scripts": {
     "dist": "webpack -p -c webpack.config.js",
