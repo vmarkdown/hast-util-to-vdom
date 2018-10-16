@@ -8,6 +8,8 @@ module.exports = {
     },
     text: function(h, node) {
         return node.value;
+    },
+    comment: function () {
+        
     }
-
 };
