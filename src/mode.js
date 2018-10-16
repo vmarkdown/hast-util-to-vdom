@@ -23,9 +23,9 @@ var defaultModes = {
                 props['class'] = node.properties.className;
                 delete props.attrs.className;
             }
-
-            if(node.html) {
-                props.domProps.innerHTML = node.html;
+            if(node.properties.innerHTML) {
+                props.domProps.innerHTML = node.properties.innerHTML;
+                delete props.attrs.innerHTML;
             }
             return props;
         }
