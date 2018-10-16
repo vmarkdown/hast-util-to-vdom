@@ -1,5 +1,6 @@
-function isFunction(obj){
-    return Object.prototype.toString.call(obj)==='object Function';
+function isFunction(functionToCheck) {
+    var getType = {};
+    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
 }
 
 function isString(str) {
