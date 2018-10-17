@@ -11,9 +11,6 @@ module.exports = {
     },
     comment: function () {
         
-    },
-    raw: function (h, node, properties, children) {
-        // return h(node.tagName, properties, children);
-        return node.value;
     }
+
 };
