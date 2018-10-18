@@ -11,6 +11,9 @@ module.exports = {
     },
     comment: function () {
         
+    },
+    component: function (h, node, properties) {
+        return h(node.component, properties);
     }
 
 };
