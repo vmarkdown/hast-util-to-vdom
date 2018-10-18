@@ -14,6 +14,9 @@ module.exports = {
     },
     component: function (h, node, properties) {
         return h(node.component, properties);
+    },
+    raw: function (h, node) {
+        return node.value;
     }
 
 };
