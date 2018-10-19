@@ -38,6 +38,10 @@ var defaultModes = {
 
             }
 
+            if(node.hasOwnProperty('key')){
+                props.key = node.key;
+            }
+
             return props;
 
         }
